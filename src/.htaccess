@@ -1,0 +1,7 @@
+RewriteEngine on
+RewriteBase /
+
+RewriteRule ^$ /controllers/listController.php
+RewriteRule ^write$ /controllers/writeController.php
+RewriteRule ^(\d)+$ /controllers/listController.php?id=$1
+RewriteRule ^tag/(.*) /controllers/listController.php?tag=$1
