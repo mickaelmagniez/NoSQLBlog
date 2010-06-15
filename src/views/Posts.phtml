@@ -1,0 +1,8 @@
+Last entries : 
+<ul>
+<?php foreach ($this->posts as $post) : $this->post = $post;?>
+	<li>
+		<?php $this->partial('Post.phtml'); ?>
+	</li>
+<?php endforeach; ?>
+</ul>
