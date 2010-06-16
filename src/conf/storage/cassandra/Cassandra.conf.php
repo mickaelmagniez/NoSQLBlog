@@ -1,0 +1,4 @@
+<?php
+
+define('CASSANDRA_KEYSPACE', 'NoSQLBlog');
+define('CASSANDRA_COLUMNFAMILY_BLOGENTRIES', 'BlogEntries');
