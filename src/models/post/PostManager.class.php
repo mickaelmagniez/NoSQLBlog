@@ -15,6 +15,19 @@ class Postmanager extends BaseManager {
     }
 
     /**
+     * @param integer $_iCount
+     * @return array
+     */
+    public function insertPost($_sTitle, $_sText, $_sTags) {
+        $oPost = new Post();
+        $oPost->title = $_sTitle;
+        $oPost->text = $_sText;
+        $oPost->tags = explode(',', $_sTags);
+        $oPost->slug = $this->generateSlug($_sTitle);
+        return $this->getRepository()->insertPost($oPost);
+    }
+
+    /**
      * @return $poRepository
      */
     protected function getRepository() {
@@ -29,6 +42,14 @@ class Postmanager extends BaseManager {
      */
     protected function setRepository($poRepository) {
         $this->moRepository = $poRepository;
+    }
+
+    /**
+     * @param string $_sTitle
+     * @return string
+     */
+    private function generateSlug($_sTitle) {
+        return preg_replace('/[^a-zA-Z0-9]/', '-', strtolower($_sTitle));
     }
 
 }

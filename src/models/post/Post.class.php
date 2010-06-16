@@ -18,6 +18,10 @@ class Post {
      * @var array
      */
     public $tags = array();
+    /**
+     * @var string
+     */
+    public $slug;
 
 }
 

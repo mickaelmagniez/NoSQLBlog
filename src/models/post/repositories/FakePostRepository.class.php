@@ -21,5 +21,13 @@ class FakePostRepository implements IPostRepository {
         return $aPosts;
     }
 
+	/**
+     * @param Post $_oPost
+     * @return boolean
+     */
+    public function insertPost($_oPost) {
+		return true;
+	}
+
 }
 

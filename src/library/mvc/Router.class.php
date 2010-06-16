@@ -45,7 +45,7 @@ class Router {
             $action = $this->msAction;
         }
         /* ** run the action ** */
-        $controller->$action();
+        $controller->$action($_GET);
     }
 
     /**
@@ -53,7 +53,7 @@ class Router {
      * @get the controller
      */
     private function getRoute() {
-        $sRoute = (empty($_GET['cnt'])) ? '' : $_GET['cnt'];
+        $sRoute = (empty($_GET['rt'])) ? '' : $_GET['rt'];
 
         if (empty($sRoute)) {
             $this->msController = 'Index';
@@ -64,7 +64,7 @@ class Router {
             if (isset($aArgs[1])) {
                 $this->msAction = $aArgs[1];
             } else {
-                $this->msAction = 'index';
+                $this->msAction = 'Index';
             }
         }
         $this->msFile = $this->msPath . '/' . $this->msController . 'Controller.class.php';

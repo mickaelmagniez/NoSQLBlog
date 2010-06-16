@@ -1,7 +1,8 @@
 RewriteEngine on
 RewriteBase /
 
-RewriteRule ^$ /controllers/listController.php
-RewriteRule ^write$ /controllers/writeController.php
-RewriteRule ^(\d)+$ /controllers/listController.php?id=$1
-RewriteRule ^tag/(.*) /controllers/listController.php?tag=$1
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+RewriteRule ^(.*)$ index.php?rt=$1 [L,QSA]
+
