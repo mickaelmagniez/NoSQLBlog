@@ -155,6 +155,7 @@
 
 		<Keyspace Name="NoSQLBlog">
 			<ColumnFamily CompareWith="BytesType" Name="BlogEntries"/>
+			<ColumnFamily CompareWith="TimeUUIDType" Name="TaggedPosts"/>
 			<ReplicaPlacementStrategy>org.apache.cassandra.locator.RackUnawareStrategy</ReplicaPlacementStrategy>
       <ReplicationFactor>1</ReplicationFactor>
 			<EndPointSnitch>org.apache.cassandra.locator.EndPointSnitch</EndPointSnitch>

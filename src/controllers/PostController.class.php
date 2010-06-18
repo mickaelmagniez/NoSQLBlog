@@ -35,7 +35,8 @@ class PostController extends Controller {
         } else {
             $oPostManager = new PostManager();
             if ($oPostManager->insertPost($_args['title'], $_args['text'], $_args['tags'])) {
-                header('Location: /');
+                //header('Location: /');
+				$this->last();
             } else {
                 $this->write();
             }
