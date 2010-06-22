@@ -1,0 +1,55 @@
+html {
+	font-family: Calibri,Georgia,Arial;
+}
+
+body {
+	width:980px;
+	margin: 0 auto;
+}
+
+header {
+	display: block;
+	height: 40px;
+	margin: 10px 20px;
+	padding: 10px;
+	border: 2px solid #01547F;
+	border-radius: 10px 10px;
+	-moz-border-radius: 10px 10px;
+}
+
+header h1 {
+	float: left;
+	font-size: 24px;
+	font-weight: bold;
+	color: #01547F;
+	font-family: Cambria,Georgia,Arial;
+}
+
+nav {
+	float: right;
+}
+
+nav ul li {
+	float: left;
+	list-style-type: none;
+	margin: 0 10px
+}
+
+nav ul li a {
+	border-radius: 10px 10px;
+	-moz-border-radius: 10px 10px;
+	color: #01547F;
+	display: block;
+	margin-top: 8px;
+	padding: 5px 8px;
+	text-decoration: none;
+}
+
+nav ul li a:hover, nav ul li.active a {
+	background-color: #01547F;
+	color: white;
+}
+
+article {
+	
+}

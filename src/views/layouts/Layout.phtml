@@ -1,18 +1,21 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html>
-<head>
-	<title>NoSQLBlog</title>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-</head>
-<body>
-	<div class="head">
-		<?php echo $this->partial("Header.phtml");?>
-	</div>
-	<div class="content">
-		<?php echo $this->placeholder("content");?>
-	</div>
-	<div class="footer">
-		<?php echo $this->partial("Footer.phtml");?>
-	</div>
-</body>
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>NoSQLBlog</title>
+		<meta charset="utf-8" />
+		<meta name="author" content="Mickael Magniez" />
+		<link rel="stylesheet" type="text/css" href="/static/styles/reset.css">
+		<link rel="stylesheet" type="text/css" href="/static/styles/style.css">
+	</head>
+	<body>
+		<header>
+			<?php echo $this->partial("Header.phtml"); ?>
+		</header>
+		<div class="content">
+			<?php echo $this->placeholder("content"); ?>
+		</div>
+		<div class="footer">
+			<?php echo $this->partial("Footer.phtml"); ?>
+		</div>
+	</body>
 </html>
