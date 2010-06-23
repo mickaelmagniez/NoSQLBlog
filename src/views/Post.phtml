@@ -1,9 +1,11 @@
-<h6><?php echo $this->post->title; ?></h6>
-<p class="text">
-	<?php echo $this->post->text; ?>
-</p>
-<p class="tags">
-	<?php foreach ($this->post->tags as $tag):
-			echo $tag;
-	endforeach;?>
-</p>
+<article>
+	<h6><?php echo $this->post->title; ?></h6>
+	<p class="text">
+		<?php echo $this->post->text; ?>
+	</p>
+	<p class="tags">
+		<?php foreach ($this->post->tags as $tag): ?>
+				<a href="/Post/Tag/<?php echo $tag ?>"><?php echo $tag; ?></a>
+		<?php endforeach;?>
+	</p>
+</article>

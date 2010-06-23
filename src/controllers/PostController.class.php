@@ -25,21 +25,28 @@ class PostController extends Controller {
         $this->render();
     }
 
+	public function tag($_args) {
+        $oView = new View('Posts.phtml');
+        $oPostManager = new PostManager();
+        $oView->posts = $oPostManager->getLastPostsByTag($_args[0]);;
+        $this->moLayout->setPlaceholder('content', $oView->execute());
+        $this->render();
+    }
+
     public function write($_args) {
-        if (!isset($_args['title'])) {
+        if (isset($_args['title'])) {
+            $oPostManager = new PostManager();
+            if ($oPostManager->insertPost($_args['title'], $_args['text'], $_args['tags'])) {
+                header('Location: /');
+            } else {
+                $this->write();
+            }
+        } else {
             $oView = new View('Write.phtml');
             $oPostManager = new PostManager();
             $oView->posts = $oPostManager->getLastPosts();;
             $this->moLayout->setPlaceholder('content', $oView->execute());
             $this->render();
-        } else {
-            $oPostManager = new PostManager();
-            if ($oPostManager->insertPost($_args['title'], $_args['text'], $_args['tags'])) {
-                //header('Location: /');
-				$this->last();
-            } else {
-                $this->write();
-            }
         }
     }
 

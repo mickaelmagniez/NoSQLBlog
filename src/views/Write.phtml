@@ -1,17 +1,18 @@
-<?php ?>
-<form>
+<form action="/Post/Write" id="write">
+	<h1>Write new post</h1>
 	<p>
-		<label for="title">Title : </label>
-		<input type="text" name="title" maxlength="100" />
+		<label for="title">Title</label>
+		<input type="text" name="title">
 	</p>
 	<p>
+		<label for="text">Text</label>
 		<textarea name="text"></textarea>
 	</p>
 	<p>
-	<label for="tags">Tags : </label>
-	<input type="text" name="tags" maxlength="100" />
+		<label for="tags">Tags</label>
+		<input type="text" name="tags">
 	</p>
 	<p>
-		<input type="submit" />
+		<input type="submit" value="Publish"/>
 	</p>
 </form>

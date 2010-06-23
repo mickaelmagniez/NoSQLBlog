@@ -14,6 +14,15 @@ class Postmanager extends BaseManager {
         return $this->getRepository()->getLastPosts($_iCount);
     }
 
+	/**
+	 * @param string $_sTag
+     * @param integer $_iCount
+     * @return array
+     */
+    public function getLastPostsByTag($_sTag, $_iCount = 10) {
+        return $this->getRepository()->getLastPostsByTag($_sTag, $_iCount);
+    }
+
     /**
      * @param integer $_iCount
      * @return array

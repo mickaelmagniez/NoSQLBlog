@@ -45,7 +45,7 @@ class Router {
             $action = $this->msAction;
         }
         /* ** run the action ** */
-        $controller->$action($_GET);
+        $controller->$action(array_merge($this->maArgs,$_GET));
     }
 
     /**
@@ -66,6 +66,9 @@ class Router {
             } else {
                 $this->msAction = 'Index';
             }
+			if (isset($aArgs[2])) {
+				$this->maArgs = array_slice($aArgs, 2);
+           	}
         }
         $this->msFile = $this->msPath . '/' . $this->msController . 'Controller.class.php';
     }
