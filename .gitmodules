@@ -1,0 +1,3 @@
+[submodule "src/library/storage/cassandra/pandra"]
+	path = src/library/storage/cassandra/pandra
+	url = http://github.com/mjpearson/Pandra.git

@@ -45,6 +45,7 @@ class CassandraPostRepository extends CassandraRepository implements IPostReposi
         $oCfPostTags = $this->getTagsPostsColumnFamily($_sTag);
         @$oCfPostTags->limit($_iCount)->load();
         $aPosts = array();
+		var_dump($oCfPostTags->toArray());
         foreach ($oCfPostTags->toArray() as $sSlug) {
             $oCfPost = $this->getPostsColumnFamily($sSlug);
             $oCfPost->load();
