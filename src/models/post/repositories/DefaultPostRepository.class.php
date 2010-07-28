@@ -1,6 +1,7 @@
 <?php
-require_once __MODEL_PATH . 'post/repositories/CassandraPostRepository.class.php';
-class DefaultPostRepository extends CassandraPostRepository {
+require_once __MODEL_PATH . 'post/repositories/RedisPostRepository.class.php';
+
+class DefaultPostRepository extends RedisPostRepository {
 
 }
 

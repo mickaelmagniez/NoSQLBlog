@@ -1,4 +1,5 @@
 <?php
+require_once __MODEL_PATH . 'post/Post.class.php';
 
 interface IPostRepository {
 
