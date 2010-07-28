@@ -5,19 +5,21 @@ interface IPostRepository {
     /**
      * Get last x posts
      *
-     * @param integer $_iCount
+     * @param int $_iCount
+     * @param int $_iPage
      * @return array
      */
-    public function getLastPosts($_iCount = 10);
+    public function getLastPosts($_iCount = 5, $_iPage = 1);
 
 	/**
      * Get last x posts by tag
      *
 	 * @param string $_sTag
-     * @param integer $_iCount
+     * @param int $_iCount
+     * @param int $_iPage
      * @return array
      */
-    public function getLastPostsByTag($_sTag, $_iCount = 10);
+    public function getLastPostsByTag($_sTag, $_iCount = 5, $_iPage = 1);
 
     /**
      * Insert a new post

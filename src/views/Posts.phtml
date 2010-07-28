@@ -1,9 +1,19 @@
 <section>
-<ul>
+<ul id="posts">
 <?php foreach ($this->posts as $post) : $this->post = $post;?>
 	<li>
 		<?php $this->partial('Post.phtml'); ?>
 	</li>
 <?php endforeach; ?>
 </ul>
+<?php if (count($this->posts) == PAGE_SIZE || $this->currentpage != 1) :?>
+<div id="pages">
+	<?php if (count($this->posts) == PAGE_SIZE) :?>
+	<a class="old" href="<?php echo $this->baseurl . '/' . ($this->currentpage + 1)?>">Older Posts</a>
+	<?php endif;?>
+	<?php if ($this->currentpage != 1) :?>
+	<a class="recent" href="<?php echo $this->baseurl . '/' . ($this->currentpage - 1)?>">More recent Posts</a>
+	<?php endif;?>
+</div>
+<?php endif;?>
 </section>

@@ -4,7 +4,6 @@ require_once __SITE_PATH . '/library/mvc/' . 'Controller.class.php';
 require_once __SITE_PATH . '/library/mvc/' . 'Registry.class.php';
 require_once __SITE_PATH . '/library/mvc/' . 'Router.class.php';
 require_once __SITE_PATH . '/library/mvc/' . 'View.class.php';
-/*** auto load model classes ** */
 
 define('__CONTROLLER_PATH', __SITE_PATH . '/controllers/');
 define('__MODEL_PATH', __SITE_PATH . '/models/');
@@ -25,3 +24,5 @@ function __autoload($class_name) {
 }
 
 Registry::init();
+
+require_once __SITE_PATH . '/conf/Blog.conf.php';
