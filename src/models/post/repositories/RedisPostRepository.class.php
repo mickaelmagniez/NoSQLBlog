@@ -59,8 +59,7 @@ class RedisPostRepository extends RedisRepository implements IPostRepository {
 	 */
 	public function insertPost($_oPost) {
 		$sPostKey = $this->generatePostKey($_oPost->slug);
-
-		if ($this->moClient->hGet() !== false) {
+		if ($this->moClient->exists($sPostKey) === false) {
 			$this->moClient->hMset($sPostKey, array('slug'=> $_oPost->slug, 'title'=> $_oPost->title, 'text'=> $_oPost->text));
 			$this->moClient->delete($sPostKey .  self::KEY_SEP . 'tags');
 			foreach ($_oPost->tags as $sTag) {

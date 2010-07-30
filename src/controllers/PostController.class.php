@@ -47,7 +47,7 @@ class PostController extends Controller {
 			if ($oPostManager->insertPost($_args['title'], $_args['text'], $_args['tags'])) {
 				header('Location: /');
 			} else {
-				$this->write();
+				$this->write(array());
 			}
 		} else {
 			$oView = new View('Write.phtml');
