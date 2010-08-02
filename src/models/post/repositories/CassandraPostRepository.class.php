@@ -26,6 +26,21 @@ class CassandraPostRepository extends CassandraRepository implements IPostReposi
 		CASSANDRA_COLUMNFAMILY_TAGSPOSTS,
 		PandraColumnFamily::TYPE_UUID);
 	}
+	/**
+	 *
+	 * @param string $_sSlug
+	 * @return Post
+	 */
+	public function getPost($_sSlug) {
+		$oCfPost = $this->getPostsColumnFamily($_sSlug);
+		$oCfPost->load();
+		$oPost = new Post();
+		$oPost->slug = $oCfPost['slug'];
+		$oPost->title = $oCfPost['title'];
+		$oPost->text = $oCfPost['text'];
+		$oPost->tags = explode(',', $oCfPost['tags']);
+		return $oPost;
+	}
 
 	/**
 	 * @param int $_iCount
@@ -49,14 +64,7 @@ class CassandraPostRepository extends CassandraRepository implements IPostReposi
 		// Bad way to paging, must use cassandra slices, but not the purpose
 		$aPostsResult = array_splice($oCfPostTags->toArray(), ($_iPage - 1) * $_iCount,$_iCount);
 		foreach ($aPostsResult as $sSlug) {
-			$oCfPost = $this->getPostsColumnFamily($sSlug);
-			$oCfPost->load();
-			$oPost = new Post();
-			$oPost->slug = $oCfPost['slug'];
-			$oPost->title = $oCfPost['title'];
-			$oPost->text = $oCfPost['text'];
-			$oPost->tags = explode(',', $oCfPost['tags']);
-			$aPosts[] = $oPost;
+			$aPosts[] = $this->getPost($sSlug);
 		}
 		return $aPosts;
 	}
