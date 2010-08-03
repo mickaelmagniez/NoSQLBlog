@@ -26,6 +26,7 @@ class CassandraPostRepository extends CassandraRepository implements IPostReposi
 		CASSANDRA_COLUMNFAMILY_TAGSPOSTS,
 		PandraColumnFamily::TYPE_UUID);
 	}
+
 	/**
 	 *
 	 * @param string $_sSlug

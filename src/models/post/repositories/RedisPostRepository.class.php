@@ -22,6 +22,21 @@ class RedisPostRepository extends RedisRepository implements IPostRepository {
 		return self::KEYPREFIX_POST . self::KEY_SEP .$_sSlug;
 	}
 
+	/**
+	 *
+	 * @param string $_sSlug
+	 * @return Post
+	 */
+	public function getPost($_sSlug) {
+		$aPost = $this->moClient->hGetAll($this->generatePostKey($_sSlug));
+		$oPost = new Post();
+		$oPost->slug = $aPost['slug'];
+		$oPost->title = $aPost['title'];
+		$oPost->text = $aPost['text'];
+		$oPost->tags = $this->moClient->lGetRange($this->generatePostKey($_sSlug) . self::KEY_SEP . 'tags', 0, 10);
+		return $oPost;
+	}
+
 
 	/**
 	 * @param int $_iCount
@@ -42,13 +57,7 @@ class RedisPostRepository extends RedisRepository implements IPostRepository {
 		$aPosts = array();
 		$aSlugs = $this->moClient->lGetRange(self::KEYPREFIX_TAGPOST.  self::KEY_SEP . $_sTag, ($_iPage - 1) * $_iCount,$_iPage * $_iCount);
 		foreach($aSlugs as $sSlug) {
-			$aPost = $this->moClient->hGetAll($this->generatePostKey($sSlug));
-			$oPost = new Post();
-			$oPost->slug = $aPost['slug'];
-			$oPost->title = $aPost['title'];
-			$oPost->text = $aPost['text'];
-			$oPost->tags = $this->moClient->lGetRange($this->generatePostKey($sSlug) . self::KEY_SEP . 'tags', 0, 10);
-			$aPosts[] = $oPost;
+			$aPosts[] = $this->getPost($sSlug);
 		}
 		return $aPosts;
 	}
@@ -67,7 +76,7 @@ class RedisPostRepository extends RedisRepository implements IPostRepository {
 				$this->moClient->lPush(self::KEYPREFIX_TAGPOST.  self::KEY_SEP . $sTag, $_oPost->slug);
 			}
 			$this->moClient->lPush(self::KEYPREFIX_TAGPOST.  self::KEY_SEP . self::KEY_ALLPOSTS, $_oPost->slug);
-			
+
 			return true;
 		} else {
 			return false;
